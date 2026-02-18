@@ -2,7 +2,7 @@
 
 A browser-based implementation of the classic 2048 puzzle game built using Vanilla JavaScript, HTML, and CSS.
 
-🔗 **Live Demo:**(https://dvoris923.github.io/js_2048__game/)
+🔗 [**DEMO LINK**](https://dvoris923.github.io/js_2048__game/)
 
 ---
 
