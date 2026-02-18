@@ -1,3 +1,177 @@
+$tile-colors: (
+  2: '../images/2.gif',
+  4: '../images/4.gif',
+  8: '../images/8.gif',
+  16: '../images/16.gif',
+  32: '../images/32.gif',
+  64: '../images/64.gif',
+  128: '../images/128.gif',
+  256: '../images/256.gif',
+  512: '../images/512.gif',
+  1024: '../images/1024.gif',
+  2048: '../images/2048.gif',
+);
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 375px;
+}
+
 body {
   margin: 0;
+  padding-block: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+
+  font-family: system-ui;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+
+  background-color: #ffff;
+  color: #f9f6f2;
+}
+
+button {
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+}
+
+p {
+  margin: 0;
+}
+
+.container {
+  display: grid;
+  grid-template-rows: auto auto 75px auto;
+  gap: 25px;
+  width: 350px;
+}
+
+.game-field {
+  border-spacing: 10px;
+  border-radius: 5px;
+  background-color: #d69200;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  width: 350px;
+}
+
+.field-cell {
+  width: 75px;
+  height: 75px;
+  border-radius: 5px;
+
+  text-align: center;
+  user-select: none;
+  background-color: #fff5f5;
+  background-size: 100%;
+
+  @each $value, $color in $tile-colors {
+    &--#{$value} {
+      background-image: url($color);
+    }
+  }
+}
+
+.game-header {
+  display: grid;
+  grid-template-columns: 85px 155px 85px;
+  justify-content: space-between;
+
+  height: 85px;
+}
+
+h1 {
+  margin: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 5px;
+
+  font-size: 24px;
+  background-color: #9acd00;
+}
+
+.controls {
+  display: flex;
+  flex-direction: row;
+  row-gap: 10px;
+
+  font-size: 16px;
+}
+
+.info {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  align-content: center;
+  flex-wrap: wrap;
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+  text-align: center;
+  background-color: #a1a1a1;
+}
+
+.button {
+  background-color: #007c46;
+  color: #f9f6f2;
+  border: none;
+  border-radius: 5px;
+
+  font-size: 16px;
+  letter-spacing: 0.5px;
+
+  transition: opacity 0.2s;
+
+  &.restart {
+    background-color: #dc2424;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.message {
+  padding: 10px;
+  border-radius: 5px;
+
+  font-size: 22px;
+  text-align: center;
+  background-color: #4a4a4ab7;
+
+  &-start span {
+    opacity: 0.75;
+  }
+  &-win {
+    background-color: #006b04;
+  }
+  &-lose {
+    background-color: #f00;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.instructions {
+  font-size: 18px;
+  padding: 10px;
+  color: #000;
 }
